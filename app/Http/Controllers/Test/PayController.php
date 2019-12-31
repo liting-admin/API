@@ -20,8 +20,8 @@ class PayController extends Controller
         $sign = '';
         $timestamp = date('Y-m-d H:i:s');
         $version = '1.0';
-        $return_url = 'http://1905API.com/test/alipay/return';          //支付宝同步通知
-        $notify_url = 'http://1905.com/test/alipay/notify';        // 支付宝异步通知地址
+        $return_url = 'http://liting.bianaoao.top/test/alipay/return';          //支付宝同步通知
+        $notify_url = 'http://liting.bianaoao.top/test/alipay/notify';        // 支付宝异步通知地址
         $biz_content = '';
 
 
