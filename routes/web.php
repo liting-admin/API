@@ -14,4 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/test/pay','Test\PayController@pay');
+Route::get('/test/pay','Test\PayController@pay');  //支付
+Route::get('/test/alipay/notify','Test\AliController@notify');  //验签异步
+Route::get('/test/alipay/return','Test\AliController@aliReturn');   //支付宝同步通知
+
