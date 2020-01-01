@@ -19,7 +19,7 @@ class PayController extends Controller
         $signtype = 'RSA2';
         $sign = '';
         $timestamp = date('Y-m-d H:i:s');
-        $version = '100';
+        $version = '1.0';
         $return_url = 'http://liting.bianaoao.top/test/alipay/return';          //支付宝同步通知
         $notify_url = 'http://liting.bianaoao.top/test/alipay/notify';        // 支付宝异步通知地址
         $biz_content = '';
@@ -28,7 +28,7 @@ class PayController extends Controller
         //请求参数
         $out_trade_no = time().rand(1111,9999);              //商户订单号
         $product_code = 'FAST_INSTANT_TRADE_PAY';
-        $total_amount = 100000;
+        $total_amount = 100;
         $subject = '测试订单' . $out_trade_no;
 
 
