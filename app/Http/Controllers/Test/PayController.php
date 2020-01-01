@@ -19,7 +19,7 @@ class PayController extends Controller
         $signtype = 'RSA2';
         $sign = '';
         $timestamp = date('Y-m-d H:i:s');
-        $version = '1.0';
+        $version = '100';
         $return_url = 'http://liting.bianaoao.top/test/alipay/return';          //支付宝同步通知
         $notify_url = 'http://liting.bianaoao.top/test/alipay/notify';        // 支付宝异步通知地址
         $biz_content = '';
