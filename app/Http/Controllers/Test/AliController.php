@@ -18,7 +18,6 @@ class AliController extends Controller
         $log2 =date('Y-m-d H:i:s') . ' >>> ' .$data2 ."\n";
         file_put_contents('logs/alipay.log',$log2,FILE_APPEND);
         $data = $_POST;
-        dd($data);
         $sign = base64_decode($data['sign']);
         unset($data['sign_type']);
         unset($data['sign']);
