@@ -17,4 +17,7 @@ Route::get('/', function () {
 Route::get('/test/pay','Test\PayController@pay');  //支付
 Route::post('/test/alipay/notify','Test\AliController@notify');  //验签异步
 Route::get('/test/alipay/return','Test\AliController@aliReturn');   //支付宝同步通知
+Route::post('/test/index','Test\TestController@index'); 
+Route::post('/test/user','Test\TestController@user'); 
+Route::get('/test/userList','Test\TestController@userList')->middleware('UserLists'); 
 
