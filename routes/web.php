@@ -41,4 +41,4 @@ Route::get('/user/addkey','Test\JieController@addkey');
 Route::post('/user/addkeyy','Test\JieController@addkeys');
 
 Route::get('/user/deckey','Test\JieController@deckey');
-Route::post('/user/deckey','Test\JieController@deckeys');
+Route::post('/user/deckeyy','Test\JieController@deckeys');
