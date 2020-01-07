@@ -90,6 +90,6 @@ class JieController extends Controller
         $u = Wd::where('uid', $uid)->value('pubkey');
         $a=base64_decode($enc_data);
         openssl_public_decrypt($a,$dec,$u);
-        echo '</span style=color:red>解密数据：</span>'.$dec;
+        echo '<span style=color:red>解密数据：</span>'.$dec;
     }
 }
