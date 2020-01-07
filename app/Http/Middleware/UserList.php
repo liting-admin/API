@@ -29,8 +29,8 @@ class UserList
             Redis::expire($redis_key, 10);
             die;
         }
-        $count = Redis::incr($redis_key);
-        echo 'count:'.$count;
+        // $count = Redis::incr($redis_key);
+        // echo 'count:'.$count;
         return $next($request);
     }
     
