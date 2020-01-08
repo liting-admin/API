@@ -95,4 +95,6 @@ class TestController extends Controller
         $count = Redis::incr($redis_key);
         echo 'count:'.$count;
     }
+
+
 }

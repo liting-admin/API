@@ -92,4 +92,75 @@ class JieController extends Controller
         openssl_public_decrypt($a,$dec,$u);
         echo '<span style=color:red>解密数据：</span>'.$dec;
     }
+    //接收
+    public function sign()
+    {
+       print_r($_GET);
+       echo '</br>';
+       echo '<hr>';
+       $sign=$_GET['sign'];
+        unset($_GET['sign']);
+        print_r($sign);
+        ksort($_GET);
+        $str = '';
+        foreach($_GET as $k => $v)
+        {
+            $str .= $k .'=' .$v.'&';
+        } 
+        //去掉&符号
+        $str=rtrim($str,'&');
+        echo $str;
+        //使用公钥
+        echo '<hr>';
+        $pubkey = file_get_contents(storage_path('keys/pub.key'));
+        $status = openssl_verify($str,base64_decode($sign),$pubkey,OPENSSL_ALGO_SHA256);
+        print_r($status);
+        // echo 111;
+
+    }
+
+    public function liting()
+    {
+        return view('user.insert');
+    }
+    
+
+    public function zhangfei()
+    {
+        unset($_POST['_token']);
+        print_r($_POST);echo '</br>';echo '<hr>';
+        $sign = base64_decode($_POST['sign']);
+        unset($_POST['sign']);
+        print_r($_POST);echo '</br>';echo '<hr>';
+        $params =[];
+        foreach($_POST['k'] as $k=>$v)
+        {
+            if(empty($v)){
+                continue;     //跳过空字段
+
+            }
+            $params[$v] = $_POST['v'][$k];
+        }
+        ksort($params);
+        print_r($params);echo '</br>';echo '<hr>';
+        //拼接参数
+        $str = "";
+        foreach($params as $k=>$v){
+            $str .= $k . '=' . $v . '&';
+        }
+        $str = trim($str,'&');
+
+        //验签
+        $uid = Auth::id();
+        $u =Wd::where('uid',$uid)->value('pubkey');
+
+        $status = openssl_verify($str,$sign,$u,OPENSSL_ALGO_SHA256);
+        if($status)
+        {
+            echo '<span style=color:red>验签ok</span>';
+        }else{
+            echo '验签失败';
+        }
+    }
+
 }

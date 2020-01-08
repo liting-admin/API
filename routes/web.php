@@ -42,3 +42,8 @@ Route::post('/user/addkeyy','Test\JieController@addkeys');
 
 Route::get('/user/deckey','Test\JieController@deckey');
 Route::post('/user/deckeyy','Test\JieController@deckeys');
+
+Route::get('/user/sign','Test\JieController@sign');
+
+Route::get('/user/liting','Test\JieController@liting');
+Route::post('/user/insert','Test\JieController@zhangfei');
