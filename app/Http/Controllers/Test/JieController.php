@@ -159,7 +159,7 @@ class JieController extends Controller
         $status = openssl_verify($str,$sign,$u,OPENSSL_ALGO_SHA256);
         if($status)
         {
-            echo '<span style=color:red>验签ok</span>';
+            echo '<h1 style=color:red>验签ok</h1>';
         }else{
             echo '验签失败';
         }
