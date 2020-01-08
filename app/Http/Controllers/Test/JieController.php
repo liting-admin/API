@@ -140,7 +140,9 @@ class JieController extends Controller
 
             }
             $params[$v] = $_POST['v'][$k];
+           
         }
+        // print_r($params[$v]);
         ksort($params);
         print_r($params);echo '</br>';echo '<hr>';
         //拼接参数

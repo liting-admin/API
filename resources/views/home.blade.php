@@ -16,9 +16,11 @@
 
                     You are logged in!
                     <br>
-                        <a href="/user/addkey">添加公钥</a>
+                       1. <a href="/user/addkey">添加公钥</a>
 
-                        <a href="/user/deckey">解密数据</a>
+                       2. <a href="/user/deckey">解密数据</a>
+
+                       3. <a href="/user/liting"><b style="color:red">验签</b></a>
                 </div>
             </div>
         </div>
