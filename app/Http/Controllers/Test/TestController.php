@@ -185,7 +185,9 @@ class TestController extends Controller
         curl_exec($ch);
         //关闭回话
         $response=curl_close($ch);
+        print_r($response);
         $res = json_decode($response,true);
+        print_r($response);
         if($res['errno']==0){
             $response =[
                 'errno' => '0',
