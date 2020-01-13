@@ -49,3 +49,9 @@ Route::get('/user/liting','Test\JieController@liting');
 Route::post('/user/insert','Test\JieController@zhangfei');
 
 Route::get('/user/sha','Test\JieController@sha');
+
+Route::post('/user','Test\TestController@api');
+Route::post('/login','Test\TestController@login');
+Route::get('/ted','Test\TestController@red');
+
+

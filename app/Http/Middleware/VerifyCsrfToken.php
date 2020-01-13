@@ -22,7 +22,11 @@ class VerifyCsrfToken extends Middleware
         '/test/alipay/return',
         '/test/alipay/notify',
         '/test/user',
-        '/test/index'
+        '/test/index',
+        'user',
+        'login',
+        'ted'
+
 
 
     ];
