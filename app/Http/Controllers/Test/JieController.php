@@ -165,4 +165,38 @@ class JieController extends Controller
         }
     }
 
+
+    public function sha()
+    {
+        print_r($_GET);echo '</br>';echo '<hr>';
+
+        $token = 'sdfghjk';
+
+        $sign1 = $_GET['sign'];
+        echo $sign1;echo '</br>';echo '<hr>';
+
+        unset($_GET['sign']);
+        print_r($_GET);echo '</br>';echo '<hr>';
+        ksort($_GET);
+        $str = '';
+        foreach ($_GET as $k=>$v)
+        {
+            $str .= $k . '=' . $v . '&';
+        }
+
+        echo $str;echo '</br>';echo '<hr>';
+        $str = rtrim($str,'&');
+        echo $str;echo '</br>';echo '<hr>';
+        $str1 = $str . $token;
+        $sign2 = md5($str1);
+        echo $sign2;echo '</br>';echo '<hr>';
+
+        if($sign1 === $sign2){
+            echo '<b style = color:red>验签成功</b>';
+
+        }else{
+            echo '验签失败';
+        }
+    }
+
 }
