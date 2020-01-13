@@ -170,7 +170,7 @@ class TestController extends Controller
         $user_token = $_SERVER['HTTP_TOKEN'];
         $name=$_SERVER['HTTP_NAME'];
        
-        $url = "http://1905passport.com/auth";
+        $url = "http://passport.litingstudio.top/auth";
         
         $data=[
             'user_token' => $user_token,
@@ -194,7 +194,7 @@ class TestController extends Controller
         $password = $_POST['password'];
         $res = Ws::where('name',$name)->where('password',$password)->first();
         if($res){
-            $url = 'http://1905api.com/reds/ted?'.'name='.$name;
+          
             $token = Str::random(30);
             $pri='abcdest'; 
             $key=md5($name.$pri);
