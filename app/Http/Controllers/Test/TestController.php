@@ -169,12 +169,13 @@ class TestController extends Controller
         }
         $user_token = $_SERVER['HTTP_TOKEN'];
         $name=$_SERVER['HTTP_NAME'];
+       
+        $url = "http://1905passport.com/auth";
+        
         $data=[
             'user_token' => $user_token,
             'name'=>$name
         ];
-        $url = "http://1905passport.com/auth";
-       
         //初始化
         $ch = curl_init();
         //设置参数
@@ -182,27 +183,10 @@ class TestController extends Controller
         curl_setopt($ch,CURLOPT_POST,1);
         curl_setopt($ch,CURLOPT_POSTFIELDS,$data);
         //发起请求
-        curl_exec($ch);
+        $res = curl_exec($ch);
         //关闭回话
         $response=curl_close($ch);
-        print_r($response);
-        $res = json_decode($response,true);
-        print_r($response);
-        if($res['errno']==0){
-            $response =[
-                'errno' => '0',
-                'msg'   => 'ok'
-            ];
-            echo '<b style=color:red>鉴权通过</b>';
-            return $response;
-        }else{
-            $response =[
-                'errno' => '40008',
-                'msg'   => 'error'
-            ];
-            echo '鉴权未通过';
-            return $response;
-        }
+      
     }
     public function login()
     {
