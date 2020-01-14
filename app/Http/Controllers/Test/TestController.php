@@ -173,15 +173,14 @@ class TestController extends Controller
         $url = "http://passport.litingstudio.top/auth";
         
         $data=[
-            'user_token' => $user_token,
-            'name'=>$name
+            'user_token' . $user_token,
+            'name'.$name
         ];
         //初始化
         $ch = curl_init();
         //设置参数
         curl_setopt($ch,CURLOPT_URL,$url);
-        curl_setopt($ch,CURLOPT_POST,1);
-        curl_setopt($ch,CURLOPT_POSTFIELDS,$data);
+        curl_setopt($ch,CURLOPT_HTTPHEADER,$data);
         //发起请求
         $res = curl_exec($ch);
         //关闭回话
