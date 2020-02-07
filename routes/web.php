@@ -55,4 +55,6 @@ Route::post('/login','Test\TestController@login');
 Route::get('/ted','Test\TestController@red')->middleware('Regs');
 Route::get('/qian','Test\TestController@qian'); 
 Route::get('/postqian','Test\TestController@postqian'); 
+Route::get('/priv','Test\TestController@priv'); 
+Route::get('/pub','Test\TestController@pub'); 
 
