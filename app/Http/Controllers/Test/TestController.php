@@ -269,22 +269,33 @@ class TestController extends Controller
    }
    //私钥验签
    public function priv(){
-    $priv_key = file_get_contents(storage_path('keys/priv'));
-    echo $priv_key;
+   
     echo '<hr>';
     $data = [
-        'name' => 'liting',
+        'name' => 'liting1',
         'age'  => '女' 
     ];
-    $data = json_encode($data);
-    $sign = md5($priv_key . $data);
-    echo $sign;
-    echo '<hr>';
+    ksort($data);
+    //拼接呆签名字符串
+    $str = '';
+    foreach($data as $k => $v)
+    {
+        $str .= $k .'=' .$v.'&';
+    } 
+     //去掉&符号
+     $str=rtrim($str,'&');
+     //使用私钥进行签名
+     $privkey = file_get_contents(storage_path('keys/priv'));
+     openssl_sign($str,$signature,$privkey,OPENSSL_ALGO_SHA256);
+     echo $signature;echo '</br>';echo '<hr>';
+     //base64_encode
+     $sign = base64_encode($signature);
+     echo $sign;echo '</br>';echo '<hr>';
     $url = "http://1905passport.com/priv";
-        
+   
     $data=[
         'sign' => $sign,
-        'data'=>$data
+        'data'=>$str
     ];
       //初始化
       $ch = curl_init();
@@ -299,35 +310,5 @@ class TestController extends Controller
 
 
    }
-   //公钥签名
-   public function pub(){
-    $pub_key = file_get_contents(storage_path('keys/pub'));
-    echo $pub_key;
-    echo '<hr>';
-    $data = [
-        'name' => 'liting',
-        'age'  => '女' 
-    ];
-    $data = json_encode($data);
-    $sign = md5($pub_key . $data);
-    echo $sign;
-    echo '<hr>';
-    $url = "http://1905passport.com/pub";
-        
-    $data=[
-        'sign' => $sign,
-        'data'=>$data
-    ];
-      //初始化
-      $ch = curl_init();
-      //设置参数
-      curl_setopt($ch,CURLOPT_URL,$url);
-      curl_setopt($ch,CURLOPT_POST,1);
-      curl_setopt($ch,CURLOPT_POSTFIELDS,$data);
-      //发起请求
-      curl_exec($ch);
-      //关闭回话
-      curl_close($ch);
-
-   }
+   
 }
