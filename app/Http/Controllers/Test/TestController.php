@@ -269,10 +269,8 @@ class TestController extends Controller
    }
    //私钥验签
    public function priv(){
-   
-    echo '<hr>';
     $data = [
-        'name' => 'liting1',
+        'name' => 'liting',
         'age'  => '女' 
     ];
     ksort($data);
