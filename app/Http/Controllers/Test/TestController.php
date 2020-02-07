@@ -222,6 +222,22 @@ class TestController extends Controller
            return json_encode($response,true);
         }
         }
+        public function qian(){
+            $data = 'liting';
+            $key = '1905';
+            $signature= md5($data . $key);
+            echo "待发送的数据：". $data;
+            echo '</br>';
+           
+
+        //发送数据
+        $url = "http://1905passport.com/test/ming?data=".$data . '&signature='.$signature;
+        echo $url;
+        echo '<hr>';
+
+        $response = file_get_contents($url);
+        echo $response;
+        }
     
    
 }

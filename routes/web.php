@@ -53,5 +53,6 @@ Route::get('/user/sha','Test\JieController@sha');
 Route::post('/user','Test\TestController@api');
 Route::post('/login','Test\TestController@login');
 Route::get('/ted','Test\TestController@red')->middleware('Regs');
+Route::get('/qian','Test\TestController@qian'); 
 
 
