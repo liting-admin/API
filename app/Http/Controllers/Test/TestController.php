@@ -228,8 +228,6 @@ class TestController extends Controller
             $signature= md5($data . $key);
             echo "待发送的数据：". $data;
             echo '</br>';
-           
-
         //发送数据
         $url = "http://1905passport.com/test/ming?data=".$data . '&signature='.$signature;
         echo $url;
@@ -239,5 +237,34 @@ class TestController extends Controller
         echo $response;
         }
     
-   
+   public function postqian(){
+       $key = '20010409';
+       $data = [
+           'order_id'   => 'L_N' . mt_rand(11111,99999),
+           'order_amount' => mt_rand(111,999),
+           'u_id'   => 12,
+           'time'   =>time(),
+       ];
+       $json = json_encode($data);
+       $sign = md5($json . $key);
+       $url = "http://1905passport.com/postming";
+        
+       $data=[
+           'sign' => $sign,
+           'data'=>$json
+       ];
+         //初始化
+         $ch = curl_init();
+         //设置参数
+         curl_setopt($ch,CURLOPT_URL,$url);
+         curl_setopt($ch,CURLOPT_POST,1);
+         curl_setopt($ch,CURLOPT_POSTFIELDS,$data);
+         //发起请求
+         curl_exec($ch);
+         //关闭回话
+         curl_close($ch);
+ 
+     
+
+   }
 }
