@@ -308,5 +308,27 @@ class TestController extends Controller
 
 
    }
+   //加密
+   public function enc()
+    {
+        $data = 'helloworld';
+        $json=json_encode($data);echo '</br>';
+        echo $json;
+        echo '<hr>';
+        $method = 'AES-256-CBC';
+        $key = '1905API';
+        $VI = 'FJJFNC4567BMjhgf';
+
+        $enc_data = openssl_encrypt($json,$method,$key,OPENSSL_RAW_DATA,$VI);
+        // $json = base64_encode($enc_data);
+        echo "加密------>". $enc_data;echo '</br>';
+        echo '<hr>';
+        $url = "http://1905passport.com/dec?data=".urlencode(base64_encode($enc_data));
+        echo $url;echo '</br>';
+        echo '<hr>';
+        $response = file_get_contents($url);
+        echo $response;
+    
+   }
    
 }
