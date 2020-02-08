@@ -330,5 +330,25 @@ class TestController extends Controller
         echo $response;
     
    }
+   //非对称加密
+   public function feienc(){
+       $priv_key=file_get_contents(storage_path('keys/priv'));
+       echo $priv_key;echo '<hr>';
+       $data = 'helloworld';
+       openssl_private_encrypt($data,$enc_data,$priv_key);
+       echo 'encrypt:';print_r($enc_data);echo '<hr>';
+       $base64_str = base64_encode($enc_data);
+       echo 'base64_encode:'.$base64_str;echo '<hr>';
+       $urlencode = urlencode($base64_str);
+       echo 'urlencode:'.$urlencode;echo '<hr>';
+       $url = "http://1905passport.com/feidec?data=". $urlencode;
+       echo 'url:'.$url;echo '<hr>';
+    //    $response = file_get_contents($url);
+    //    echo $response;
+
+
+
+
+   }
    
 }
