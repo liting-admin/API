@@ -342,7 +342,7 @@ class TestController extends Controller
        $urlencode = urlencode($base64_str);
        echo 'urlencode:'.$urlencode;echo '<hr>';
        $url = "http://1905passport.com/feidec?data=". $urlencode;
-       echo 'url:：'.$url;echo '<hr>';
+       echo 'url:'.$url;echo '<hr>';
     //    $response = file_get_contents($url);
     //    echo $response;
 
